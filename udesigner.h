@@ -17,7 +17,6 @@ Q_OBJECT
 
 public:
     explicit UDesigner(QWidget *parent = nullptr);
-
     ~UDesigner() override;
 
     // 获取盘符
@@ -33,7 +32,6 @@ public:
     // 隐藏盘符图标
     void HideIcon2Drive();
 
-
 private slots:
     void on_okBtn_clicked();
 
@@ -43,7 +41,6 @@ private:
     QString icoPath;
     QFileInfo icoInfo;
     QFileInfo infInfo; // inf文件
-
 };
 
 

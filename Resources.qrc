@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/MacOS.qss</file>
-        <file>resources/u.png</file>
+        <file>resources/U.png</file>
+        <file>resources/ico.ico</file>
         <file>resources/img/go-down.png</file>
         <file>resources/bk.jpg</file>
     </qresource>

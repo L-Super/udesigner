@@ -6,23 +6,25 @@
 
 #include "udesigner.h"
 #include "ui_UDesigner.h"
-#include <QFileInfo>
-#include <QDir>
-#include <QDebug>
-#include <QFileDialog>
 #include <QStandardPaths>
-#include <QProcess>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QProcess>
+#include <QDebug>
+#include <QIcon>
+#include <QDir>
 
 #define cout qDebug()<<"["<<__func__<<__LINE__<<"]"
 
 UDesigner::UDesigner(QWidget *parent) :
         QWidget(parent), ui(new Ui::UDesigner) {
     ui->setupUi(this);
-//    setWindowIcon(QIcon("resources/U.png"));
+    //TODO:rc文件暂不知道如何cmake
+    setWindowIcon(QIcon(":resources/U.png"));
     GetDrives();
-
-    connect(ui->okBtn,&QPushButton::clicked,this,&UDesigner::on_okBtn_clicked);
+// 不知道为什么自动关联了信号
+//    connect(ui->okBtn,&QPushButton::clicked,this,&UDesigner::on_okBtn_clicked);
     connect(ui->toolButton,&QToolButton::clicked,this,&UDesigner::GetIcon);
 }
 
@@ -116,10 +118,6 @@ bool UDesigner::WriteInf2Drive() {
 void UDesigner::HideIcon2Drive() {
     QProcess* p = new QProcess(this);
     //TODO:输出信息写入日志
-//    connect(p,&QProcess::readyRead,this,[=]{
-//        auto info = p->readAll();
-//        cout<<info;
-//    });
     connect(p, &QProcess::readyReadStandardOutput, this, [&]{
         QProcess *pProcess = (QProcess *)sender();
         auto output = pProcess->readAllStandardOutput();
@@ -131,20 +129,12 @@ void UDesigner::HideIcon2Drive() {
         cout<<errorOutput;
     });
 
-    //TODO:尾加上inf，ico文件
-    QStringList icoArgs;
-    icoArgs << "attrib" << "+s" << "+h" << icoInfo.fileName();
-    QStringList infArgs;
-    infArgs << "attrib" << "+s" << "+h"<<"autorun.inf";
-
     QStringList args;
     args<<"/c"<<selectDrive<<"&&";
 //    args<<"/c"<<"D:"<<"&&";
     args<<"attrib" << "+s" << "+h" << "icon.ico"<<"&&";
     args<<"attrib" << "+s" << "+h" << "autorun.inf";
 
-//    args<<"/c"<<"D:"<<"&&"<<"mkdir"<<"a";
-//    args<<"&&"<<"mkdir"<<"b";
     p->start("cmd", args);
     if (!p->waitForFinished())
     {
