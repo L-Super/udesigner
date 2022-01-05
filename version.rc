@@ -1,0 +1,37 @@
+#include <windows.h>
+
+IDI_ICON1	ICON	"resources\\logo.ico"
+
+VS_VERSION_INFO VERSIONINFO
+	FILEVERSION ${PROJECT_VERSION_MAJOR},${PROJECT_VERSION_MINOR},${PROJECT_VERSION_PATCH}
+	PRODUCTVERSION ${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}
+	FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+	FILEFLAGS VS_FF_DEBUG
+#else
+	FILEFLAGS 0x0L
+#endif
+	FILEOS VOS__WINDOWS32
+	FILETYPE VFT_DLL
+	FILESUBTYPE 0x0L
+	BEGIN
+		BLOCK "StringFileInfo"
+		BEGIN
+			BLOCK "080404b0"
+			BEGIN
+				VALUE "CompanyName", "LiM"
+				VALUE "FileDescription", "U Designer"
+				VALUE "FileVersion", "${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}"
+				VALUE "LegalCopyright", "Copyright (C)2021-2077"
+				VALUE "OriginalFilename", "UDesigner.exe"
+				VALUE "ProductName", "UDesigner"
+				VALUE "ProductVersion", "${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}"
+			END
+		END
+		BLOCK "VarFileInfo"
+		BEGIN
+			VALUE "Translation", 0x804, 1200
+		END
+	END
+/* End of Version info */
+
