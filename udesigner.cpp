@@ -141,7 +141,13 @@ void UDesigner::HideIcon2Drive() {
         cout<<"QProcess fail";
         return;
     }
-    QMessageBox::information(this,"Success!","恭喜！\n创建个性化U盘图标成功！");
+
+    QMessageBox *msgBox = new QMessageBox(this);
+    QPixmap pixmap(":resources/img/info.png");
+    msgBox->setIconPixmap(pixmap.scaled(40,40));
+    msgBox->setText("恭喜！\n创建个性化U盘图标成功！");
+    msgBox->setWindowTitle("Success！");
+    msgBox->exec();
 }
 
 void UDesigner::on_okBtn_clicked() {
@@ -153,7 +159,14 @@ void UDesigner::on_okBtn_clicked() {
 
     if(icoPath.isEmpty())
     {
-        QMessageBox::warning(this,"警告","请选择图标",QMessageBox::Ok);
+        QMessageBox *msgBox = new QMessageBox(this);
+        // 无效，需要new并指定父对象，才能显示ico图标
+//        msgBox.setWindowIcon(QIcon(":resources/ico.ico"));
+        QPixmap pixmap(":resources/img/warn.png");
+        msgBox->setIconPixmap(pixmap.scaled(40,40));
+        msgBox->setText("请选择图标！");
+        msgBox->setWindowTitle("警告");
+        msgBox->exec();
         return;
     }
 
