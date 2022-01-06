@@ -26,7 +26,7 @@ if(WIN32)
 endif()
 
 # PROJECT_NAME之后加上WIN32，可以去掉控制台，发布时使用
-add_executable(${PROJECT_NAME} main.cpp udesigner.cpp udesigner.h udesigner.ui
+add_executable(${PROJECT_NAME} WIN32 main.cpp udesigner.cpp udesigner.h udesigner.ui
 #        ${RC_FILES}
         ${QRC_FILES}
         )

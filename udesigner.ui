@@ -13,9 +13,15 @@
   <property name="windowTitle">
    <string>UDesigner</string>
   </property>
+  <property name="toolTip">
+   <string>自定义磁盘图标 by Listening</string>
+  </property>
+  <property name="whatsThis">
+   <string/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
@@ -42,6 +48,15 @@
      </item>
      <item>
       <widget class="QToolButton" name="toolButton">
+       <property name="toolTip">
+        <string>选择喜欢的ico格式图标</string>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
        <property name="text">
         <string>...</string>
        </property>

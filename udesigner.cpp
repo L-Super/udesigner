@@ -20,6 +20,7 @@
 UDesigner::UDesigner(QWidget *parent) :
         QWidget(parent), ui(new Ui::UDesigner) {
     ui->setupUi(this);
+
     //TODO:rc文件暂不知道如何cmake
     setWindowIcon(QIcon(":resources/U.png"));
     GetDrives();
@@ -146,6 +147,7 @@ void UDesigner::HideIcon2Drive() {
     QPixmap pixmap(":resources/img/info.png");
     msgBox->setIconPixmap(pixmap.scaled(40,40));
     msgBox->setText("恭喜！\n创建个性化U盘图标成功！");
+    msgBox->setInformativeText("请插拔U盘或重启电脑生效");
     msgBox->setWindowTitle("Success！");
     msgBox->exec();
 }
