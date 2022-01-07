@@ -31,9 +31,13 @@ public:
     bool WriteInf2Drive();
     // 隐藏盘符图标
     void HideIcon2Drive();
+	// 移除图标
+	void RemoveIcon();
 
 private slots:
     void on_okBtn_clicked();
+	void on_cancelBtn_clicked();
+	void on_helpBtn_clicked();
 
 private:
     Ui::UDesigner *ui;

@@ -14,7 +14,7 @@
    <string>UDesigner</string>
   </property>
   <property name="toolTip">
-   <string>自定义磁盘图标 by Listening</string>
+   <string/>
   </property>
   <property name="whatsThis">
    <string/>
@@ -87,6 +87,27 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="helpBtn">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Resources.qrc">
+         <normaloff>:/resources/img/info.png</normaloff>:/resources/img/info.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelBtn">
+       <property name="toolTip">
+        <string>移除设置的图标</string>
+       </property>
+       <property name="text">
+        <string>移除</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -103,6 +124,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
