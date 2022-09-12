@@ -18,8 +18,9 @@
 #define cout qDebug()<<"["<<__func__<<__LINE__<<"]"
 
 UDesigner::UDesigner(QWidget *parent)
-        :
-        QWidget(parent), ui(new Ui::UDesigner) {
+        :QWidget(parent),
+        ui(new Ui::UDesigner)
+{
     ui->setupUi(this);
 
     //TODO:rc文件暂不知道如何cmake
