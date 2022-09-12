@@ -6,6 +6,5 @@
         <file>resources/img/go-down.png</file>
         <file>resources/img/info.png</file>
         <file>resources/img/warn.png</file>
-        <file>resources/bk.jpg</file>
     </qresource>
 </RCC>

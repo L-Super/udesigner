@@ -232,7 +232,7 @@ void UDesigner::on_okBtn_clicked()
 }
 void UDesigner::on_cancelBtn_clicked()
 {
-//	RemoveIcon();
+	RemoveIcon();
 	auto* rBox = new QMessageBox(this);
 	rBox->setText("移除图标成功！");
 	rBox->setInformativeText("重启或插拔U盘生效");
