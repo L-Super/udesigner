@@ -2,19 +2,11 @@ name: Windows MinGW
 on: 
   # push代码时触发workflow
   push:
-  # 忽略README.md
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
     paths:
       - './**'
       - '.github/workflows/windows-mingw.yml'
   # pull_request时触发workflow
   pull_request:
-    # 忽略README.md
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
     paths:
       - 'src/**'
       - '.github/workflows/windows-mingw.yml' 
@@ -25,14 +17,15 @@ jobs:
     strategy:
       matrix:
         include:
+          - qt_arch: win32_mingw73
             qt_ver: 5.12.10
             qt_tools: "tools_mingw,7.3.0-1-202004170606,qt.tools.win32_mingw730"
             qt_tools_mingw_install: mingw730_32
-          - qt_arch: win32_mingw73
+          - qt_arch: win64_mingw73
             qt_ver: 5.12.10
             qt_tools: "tools_mingw,7.3.0-1-202004170606,qt.tools.win64_mingw730"
             qt_tools_mingw_install: mingw730_64
-          - qt_arch: win64_mingw73
+          - qt_arch: win32_mingw81
             qt_ver: 5.15.2
             qt_tools: "tools_mingw,8.1.0-1-202004170606,qt.tools.win32_mingw810"
             qt_tools_mingw_install: mingw810_32
