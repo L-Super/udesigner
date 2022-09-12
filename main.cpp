@@ -11,6 +11,5 @@ int main(int argc, char *argv[]) {
     }
     UDesigner u;
     u.show();
-    //test
     return QApplication::exec();
 }
