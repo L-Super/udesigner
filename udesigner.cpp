@@ -15,7 +15,7 @@
 #include <QIcon>
 #include <QDir>
 
-#define cout qDebug()<<"["<<__func__<<__LINE__<<"]"
+#define qcout qDebug()<<"["<<__func__<<__LINE__<<"]"
 
 UDesigner::UDesigner(QWidget *parent)
         :QWidget(parent),
@@ -63,7 +63,7 @@ void UDesigner::GetIcon() {
     icoPath = QFileDialog::getOpenFileName(this, tr("选择图标文件"),
                                            defaultPath,
                                            tr("图片文件(*.ico)"));
-    cout << icoPath;
+    qcout << icoPath;
     icoInfo = QFileInfo(icoPath);
     ui->lineEdit->setText(icoPath);
 }
@@ -77,23 +77,23 @@ bool UDesigner::CopyFile2Drive(const QString &filePath) {
         return false;
 
     // fileName() 输出类似 "autorun.inf"
-    cout << fileInfo.fileName();
+    qcout << fileInfo.fileName();
     auto desPath = selectDrive + "/";
     if (fileInfo.fileName() == icoInfo.fileName()) {
-        cout << "ico copy and rename";
+        qcout << "ico copy and rename";
         if (!file.copy(desPath.append("icon.ico"))) {
-            cout << "ico copy failed";
+            qcout << "ico copy failed";
             return false;
         }
     }
         // 如果是inf文件，则复制后移除
     else if (fileInfo.baseName() == infInfo.baseName()) {
-        cout << "move inf file";
+        qcout << "move inf file";
         auto desfile = desPath.append(fileInfo.fileName());
-        cout << desfile;
+        qcout << desfile;
         // 重命名并移动到新路径
         if (!file.rename(desfile)) {
-            cout << "inf file copy failed";
+            qcout << "inf file copy failed";
             return false;
         }
     }
@@ -112,7 +112,7 @@ bool UDesigner::WriteInf2Drive() {
     out << "[autorun]" << "\n" << "icon = icon.ico";
     file.close();
     if (!file.exists()) {
-        cout << "file create failed";
+        qcout << "file create failed";
         return false;
     }
     infInfo = QFileInfo(file);
@@ -126,12 +126,12 @@ void UDesigner::HideIcon2Drive() {
     connect(p, &QProcess::readyReadStandardOutput, this, [&] {
         auto *pProcess = (QProcess *) sender();
         auto output = pProcess->readAllStandardOutput();
-        cout << output;
+        qcout << output;
     });
 // 输出错误信息
     connect(p, &QProcess::readyReadStandardError, this, [&] {
         auto errorOutput = p->readAllStandardError();
-        cout << errorOutput;
+        qcout << errorOutput;
     });
 
     QStringList args;
@@ -142,7 +142,7 @@ void UDesigner::HideIcon2Drive() {
 
     p->start("cmd", args);
     if (!p->waitForFinished()) {
-        cout << "QProcess fail";
+        qcout << "QProcess fail";
         return;
     }
 
@@ -163,12 +163,12 @@ void UDesigner::RemoveIcon() {
 
     if (icoFile.exists()) {
         if (!icoFile.remove()) {
-            cout << "icoFile remove failed";
+            qcout << "icoFile remove failed";
         }
     }
     if (infFile.exists()) {
         if (infFile.remove()) {
-            cout << "infFile remove failed";
+            qcout << "infFile remove failed";
         }
     }
 }
@@ -177,7 +177,7 @@ void UDesigner::on_okBtn_clicked() {
     auto sDrive = ui->comboBox->currentText();
     // C:/ 去掉'/'
     QString drive = sDrive.left(sDrive.lastIndexOf("/"));
-    cout << drive;
+    qcout << drive;
     SelectDrive(drive);
 
     if (icoPath.isEmpty()) {
@@ -193,13 +193,13 @@ void UDesigner::on_okBtn_clicked() {
     }
 
     if (!CopyFile2Drive(icoPath)) {
-        cout << "copy ico failed";
+        qcout << "copy ico failed";
     }
     if (!WriteInf2Drive()) {
-        cout << "write inf failed";
+        qcout << "write inf failed";
     }
     if (!CopyFile2Drive(infInfo.absoluteFilePath())) {
-        cout << "copy ico failed";
+        qcout << "copy ico failed";
     }
 
     HideIcon2Drive();
