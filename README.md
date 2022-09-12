@@ -7,7 +7,9 @@
 核心原理采用autorun.inf 和 Windows的attrib命令
 #### 使用说明
 注意，需要重启电脑或者插拔优盘才能生效。
-![输入图片说明](https://images.gitee.com/uploads/images/2022/0106/140113_a9e532d4_7857813.png "屏幕截图.png")
+
+![img.png](resources/屏幕截图.png)
+
 ![输入图片说明](https://images.gitee.com/uploads/images/2022/0106/140256_0d95447d_7857813.png "屏幕截图.png")
 
 
